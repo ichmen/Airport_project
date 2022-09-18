@@ -1,0 +1,38 @@
+@import 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap';
+* {
+  box-sizing: border-box;
+}
+
+.search-flights {
+  background: #e7efec;
+  padding: 40px 0 20px;
+}
+.search-flights__container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 1140px;
+  padding: 0 10px;
+}
+.search-flights__title {
+  margin: 0;
+  font-size: 70px;
+  font-weight: 300;
+  font-stretch: 100%;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 8px;
+}
+.search-flights__search-picture {
+  width: 44px;
+  height: 43px;
+}
+
+.table-head {
+  font-family: "Open Sans", sans-serif;
+  padding: 12px;
+  color: #95989a;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=index.css.map */
