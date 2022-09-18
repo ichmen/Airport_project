@@ -11,7 +11,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="index.css" />
-    <title>React App</title>
+    <title>Schedule "Kyiv" International Airport</title>
   </head>
   <body>
     <div class="search-flights">
@@ -52,8 +52,8 @@
             placeholder="Airline, destination or flight #"
           /><button class="search-flights__button" type="submit">Search</button>
         </form>
-        <div class="flights-toggle">
-          <li class="nav-item">
+        <div class="flights-navigation">
+          <li class="flights-navigation__item">
             <a href="/en/departures?date=10-09-2021" class="nav-link" target="_self"
               ><span class="icon"
                 ><svg
@@ -84,7 +84,7 @@
               Departures
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="flights-navigation__item">
             <a
               href="/en/arrivals?date=10-09-2021"
               aria-current="page"
@@ -116,8 +116,79 @@
             </a>
           </li>
         </div>
+        <div id="root"></div>
+        <table class="flights-table">
+          <thead class="flights-table__head">
+            <tr class="dashboard-head">
+              <th class="flights-table__head">Terminal</th>
+              <th class="flights-table__head">Local time</th>
+              <th class="flights-table__head">Destination</th>
+              <th class="flights-table__head">Status</th>
+              <th class="flights-table__head">Airline</th>
+              <th class="flights-table__head">Flight</th>
+              <th class="flights-table__head"></th>
+            </tr>
+          </thead>
+          <tr class="flight-info">
+            <td class="flight-info__text"><span class="flight-info__terminal"> A </span></td>
+            <td class="flight-info__text">4:45</td>
+            <td class="flight-info__text">
+              <span> Antalya </span>
+            </td>
+            <td class="flight-info__text">
+              <div>Departed at 4:49</div>
+            </td>
+            <td class="flight-info__text">
+              <div class="flight-info__logo">
+                <img
+                  src="https://api.iev.aero/media/airline/files/604bbdf45b1ad855035563.png"
+                  alt="Bees Airline"
+                />
+                <p class="flight-info__company-name">Bees Airline</p>
+              </div>
+            </td>
+            <td class="flight-info__text">
+              <span> 7B9021 </span>
+            </td>
+
+            <td class="details-field">
+              <div style="min-width: 150px">
+                <a href="#" class=""> Flight details </a
+                ><!---->
+              </div>
+            </td>
+          </tr>
+          <tr class="flight-info">
+            <td class="flight-info__text"><span class="flight-info__terminal"> A </span></td>
+            <td class="flight-info__text">4:45</td>
+            <td class="flight-info__text">
+              <span> Antalya </span>
+            </td>
+            <td class="flight-info__text">
+              <div>Departed at 4:49</div>
+            </td>
+            <td class="flight-info__text">
+              <div class="flight-info__logo">
+                <img
+                  src="https://api.iev.aero/media/airline/files/604bbdf45b1ad855035563.png"
+                  alt="Bees Airline"
+                />
+                <p class="flight-info__company-name">Bees Airline</p>
+              </div>
+            </td>
+            <td class="flight-info__text">
+              <span> 7B9021 </span>
+            </td>
+
+            <td class="details-field">
+              <div style="min-width: 150px">
+                <a href="#" class=""> Flight details </a
+                ><!---->
+              </div>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div id="root"></div>
   </body>
 </html>

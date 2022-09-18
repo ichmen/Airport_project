@@ -40,6 +40,7 @@
     width: 200px;
     font-size: 26px;
     background: #1eb7ee;
+    font-weight: 700;
     border: none;
     border-top-right-radius: 80px;
     text-transform: uppercase;
@@ -52,10 +53,83 @@
     }
   }
 }
-.table-head {
-  font-family: 'Open Sans', sans-serif;
-  padding: 12px;
-  color: #95989a;
-  font-weight: 600;
-  font-size: 16px;
+
+.flights-navigation {
+  display: flex;
+  margin-top: 40px;
+  &__item {
+    text-transform: uppercase;
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0;
+    border: 0;
+    position: relative;
+    font-weight: 600;
+    border-radius: 0 60px 0 0;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    outline: none;
+    background: #73d2f0;
+    overflow: hidden;
+    font-size: 24px;
+    line-height: 60px;
+    color: #fff;
+  }
+}
+.flights-table {
+  border-collapse: collapse;
+  & tr:nth-child(even) {
+    background-color: #fff;
+  }
+  &__head {
+    font-family: 'Open Sans', sans-serif;
+    padding: 12px;
+    color: #95989a;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+  }
+  &__row {
+    height: 72px;
+  }
+}
+.flight-info {
+  margin: 2px 0;
+  &:hover {
+    box-shadow: 10px 5px 5px red;
+  }
+  &__terminal {
+    color: #63c745;
+    font-weight: 700;
+    border: 1px solid #63c745;
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 22px;
+  }
+  &__text {
+    font-size: 18px;
+    line-height: 40px;
+    padding: 16px 10px;
+    border: 0;
+    // text-align: center;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+  &__company-name {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+img {
+  height: 40px;
 }
