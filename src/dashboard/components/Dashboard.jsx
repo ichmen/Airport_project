@@ -1,29 +1,40 @@
 import React from 'react';
-import { fetchFlights } from '../../gateway/gateway';
-import { dateWithOffset } from '../../utils/utils';
-export default function Dashboard() {
-  const date = new Date('9-10-2021');
-  fetchFlights(date).then(({ body: { arrival } }) =>
-    arrival
-      .filter(({ timeToStand }) => dateWithOffset(timeToStand).getDate() === date.getDate())
-      .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand))
-      .forEach(element => {
-        console.log(element['airportFromID.city_en'], element.timeToStand, element.term);
-      }),
-  );
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as Actions from '../actions/dashboard.actions';
+import * as Selectors from '../actions/dashboard.selectors';
+import FlifgtInfo from './FlightInfo';
+
+function Dashboard({ getFlights, tasksList }) {
+  useEffect(() => getFlights(), []);
+  console.log(tasksList);
   return (
-    <table>
-      <thead className="table-head">
+    <table className="flights-table">
+      <thead className="flights-table__head">
         <tr className="dashboard-head">
-          <th className="table-head">Terminal</th>
-          <th className="table-head">Local time</th>
-          <th className="table-head">Destination</th>
-          <th className="table-head">Status</th>
-          <th className="table-head">Airline</th>
-          <th className="table-head">Flight</th>
-          <th className="table-head"></th>
+          <th className="flights-table__head">Terminal</th>
+          <th className="flights-table__head">Local time</th>
+          <th className="flights-table__head">Destination</th>
+          <th className="flights-table__head">Status</th>
+          <th className="flights-table__head">Airline</th>
+          <th className="flights-table__head">Flight</th>
+          <th className="flights-table__head"></th>
         </tr>
       </thead>
+      <tbody className="flights-table__body">
+        {tasksList.map((flight, index) => (
+          <FlifgtInfo key={index} {...flight} />
+        ))}
+      </tbody>
     </table>
   );
 }
+
+const mapState = state => {
+  return { tasksList: Selectors.flightsListSelector(state) };
+};
+
+const mapDispatch = {
+  getFlights: Actions.getFlightsList,
+};
+export default connect(mapState, mapDispatch)(Dashboard);

@@ -1,6 +1,7 @@
 import React from 'react';
+import { timeWithZero } from '../../utils/utils';
 
-export function FlifgtInfo({
+export default function FlifgtInfo({
   term,
   timeToStand,
   timeLandFact,
@@ -8,39 +9,39 @@ export function FlifgtInfo({
   logo,
   airline: {
     en: { name: airlineName },
-    fltNo,
   },
   fltNo,
+
   'carrierID.IATA': carrier,
 }) {
+  const localTime = timeWithZero(timeToStand);
+  const departureTime = timeWithZero(timeLandFact);
+  const logoBaseUrl = 'https://api.iev.aero';
   return (
-    <tr class="flight-info">
-      <td class="flight-info__text">
-        <span class="flight-info__terminal"> {term} </span>
+    <tr className="flight-info">
+      <td className="flight-info__text">
+        <span className="flight-info__terminal"> {term} </span>
       </td>
-      <td class="flight-info__text">4:45</td>
-      <td class="flight-info__text">
-        <span> Antalya </span>
+      <td className="flight-info__text">{localTime}</td>
+      <td className="flight-info__text">
+        <span> {airport} </span>
       </td>
-      <td class="flight-info__text">
-        <div>Departed at 4:49</div>
+      <td className="flight-info__text">
+        <div>{`Departed at ${departureTime}`}</div>
       </td>
-      <td class="flight-info__text">
-        <div class="flight-info__logo">
-          <img
-            src="https://api.iev.aero/media/airline/files/604bbdf45b1ad855035563.png"
-            alt="Bees Airline"
-          />
-          <p class="flight-info__company-name">Bees Airline</p>
+      <td className="flight-info__text">
+        <div className="flight-info__logo">
+          <img src={logoBaseUrl + logo} alt={airlineName} />
+          <p className="flight-info__company-name">{airlineName}</p>
         </div>
       </td>
-      <td class="flight-info__text">
-        <span> 7B9021 </span>
+      <td className="flight-info__text">
+        <span> {carrier + fltNo} </span>
       </td>
 
-      <td class="details-field">
-        <div style="min-width: 150px">
-          <a href="#" class="">
+      <td className="details-field">
+        <div>
+          <a href="#" className="">
             Flight details
           </a>
         </div>

@@ -9,8 +9,15 @@ export function dateWithOffset(date) {
   // console.log(date);
   const minsPerHour = 60;
   const timeOffset = date.getTimezoneOffset() / minsPerHour;
-  console.log(timeOffset);
+  // console.log(stimeOffset);
   const result = new Date(date.setHours(date.getHours()));
   // console.log(result);
   return result;
+}
+
+export function timeWithZero(date) {
+  const time = new Date(date);
+  const hours = time.getHours();
+  const minutes = String(time.getMinutes());
+  return `${hours}:${minutes.length < 2 ? '0' + minutes : minutes}`;
 }

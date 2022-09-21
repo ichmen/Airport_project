@@ -5,7 +5,9 @@
     outline: none;
   }
 }
-
+a {
+  text-decoration: none;
+}
 .search-flights {
   background: #e7efec;
   font-family: 'Open Sans', sans-serif;
@@ -82,6 +84,7 @@
 }
 .flights-table {
   border-collapse: collapse;
+  width: 100%;
   & tr:nth-child(even) {
     background-color: #fff;
   }
@@ -99,7 +102,10 @@
 }
 .flight-info {
   margin: 2px 0;
+  position: relative;
+  z-index: 0;
   &:hover {
+    z-index: 1;
     box-shadow: 10px 5px 5px red;
   }
   &__terminal {
