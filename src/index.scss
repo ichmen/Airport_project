@@ -81,7 +81,12 @@ a {
     line-height: 60px;
     color: #fff;
     &_active{
-      color:white
+      color:#73d2f0;
+      background-color:#fff; 
+
+    }
+    & a{
+      color:inherit;
     }
   }
 }
@@ -114,7 +119,7 @@ a {
   &__terminal {
     color: #63c745;
     font-weight: 700;
-    border: 1px solid #63c745;
+    
     border-radius: 50%;
     display: inline-block;
     width: 40px;
@@ -122,6 +127,14 @@ a {
     text-align: center;
     line-height: 35px;
     font-size: 22px;
+    &_A{
+      color: #63c745;
+      border: 1px solid #63c745;
+    }
+    &_D{
+      color: #1eb7ee;
+      border: 1px solid #1eb7ee;
+    }
   }
   &__text {
     font-size: 18px;

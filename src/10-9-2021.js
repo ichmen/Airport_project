@@ -1,4 +1,4 @@
-{
+const flights={
   "body": {
     "departure": [
       {
@@ -19243,3 +19243,7 @@
   },
   "error": { "code": 200 }
 }
+
+
+const flightsPromise=new Promise((resolve)=> resolve(flights))
+export default flightsPromise

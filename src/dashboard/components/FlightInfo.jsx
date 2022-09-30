@@ -1,5 +1,6 @@
 import React from 'react';
 import { timeWithZero } from '../../utils/utils';
+import classNames from 'classnames';
 
 export default function FlifgtInfo({
   term,
@@ -17,10 +18,11 @@ export default function FlifgtInfo({
   const localTime = timeWithZero(timeToStand);
   const departureTime = timeWithZero(timeLandFact);
   const logoBaseUrl = 'https://api.iev.aero';
+  const terminalClass='flight-info__terminal_'+term
   return (
     <tr className="flight-info">
       <td className="flight-info__text">
-        <span className="flight-info__terminal"> {term} </span>
+        <span className={classNames("flight-info__terminal",terminalClass)}> {term} </span>
       </td>
       <td className="flight-info__text">{localTime}</td>
       <td className="flight-info__text">
