@@ -1,4 +1,6 @@
 @import 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap';
+@import './dashboard/components/calendar/calendar.scss';
+
 * {
   box-sizing: border-box;
   &:focus {
@@ -80,13 +82,19 @@ a {
     font-size: 24px;
     line-height: 60px;
     color: #fff;
-    &_active{
-      color:#73d2f0;
-      background-color:#fff; 
-
+    &:hover {
+      background-color: #1eb7ee;
     }
-    & a{
-      color:inherit;
+    &_active {
+      color: #73d2f0;
+      background-color: #fff;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+
+    & a {
+      color: inherit;
     }
   }
 }
@@ -119,7 +127,7 @@ a {
   &__terminal {
     color: #63c745;
     font-weight: 700;
-    
+
     border-radius: 50%;
     display: inline-block;
     width: 40px;
@@ -127,11 +135,11 @@ a {
     text-align: center;
     line-height: 35px;
     font-size: 22px;
-    &_A{
+    &_A {
       color: #63c745;
       border: 1px solid #63c745;
     }
-    &_D{
+    &_D {
       color: #1eb7ee;
       border: 1px solid #1eb7ee;
     }
