@@ -4,6 +4,8 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { calendarDatesToShow } from './calendar.utils';
 import { useState } from 'react';
 import Calendar from 'react-calendar';
+import * as Actions from '../../actions/calendar.actions';
+
 export default function CalendarWrap() {
   const { today, yesterday, tomorrow } = calendarDatesToShow();
   const [showCalendar, setCalendarVisibility] = useState(false);
@@ -17,7 +19,14 @@ export default function CalendarWrap() {
           className="calendar__icon"
           onClick={() => setCalendarVisibility(!showCalendar)}
         />
-        {showCalendar && <Calendar className={'flights__calendar'} locale={'en-EN'} />}
+        {showCalendar && (
+          <Calendar
+            className={'flights__calendar'}
+            locale={'en-EN'}
+            onChange={value => alert(value)}
+            onClick={() => alert('click')}
+          />
+        )}
       </li>
       <li className="calendar__item">
         <span className="calendar__item__date">{yesterday}</span>
@@ -37,3 +46,9 @@ export default function CalendarWrap() {
     </ul>
   );
 }
+
+const mapDispatch = {
+  setCalendarVisible: Actions.setVisible,
+  setCalendarInvisible: Actions.setInvisible,
+  changeDate: Actions.setDate,
+};
