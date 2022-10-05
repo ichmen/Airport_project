@@ -7,9 +7,9 @@ export default function calendarReducer(state = defaultState, action) {
     case DATE_CHANGED:
       return { ...state, date: action.payload.date, isVisible: false };
     case SET_VISIBLE:
-      return { state, isVisible: true };
+      return { ...state, isVisible: true };
     case SET_INVISIBLE:
-      return { state, isVisible: false };
+      return { ...state, isVisible: false };
 
     default:
       return state;

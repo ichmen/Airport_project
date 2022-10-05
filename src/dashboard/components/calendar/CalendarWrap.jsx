@@ -2,13 +2,15 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { calendarDatesToShow } from './calendar.utils';
-import { useState } from 'react';
+// import { useState } from 'react';
 import Calendar from 'react-calendar';
 import * as Actions from '../../actions/calendar.actions';
+import { dateSelector, visibilitySelector } from '../../actions/calendar.selectors';
+import { connect } from 'react-redux';
 
-export default function CalendarWrap() {
+function CalendarWrap({ setCalendarVisible, changeDate, setCalendarInvisible, date, isVisible }) {
   const { today, yesterday, tomorrow } = calendarDatesToShow();
-  const [showCalendar, setCalendarVisibility] = useState(false);
+  // const [showCalendar, setCalendarVisibility] = useState(false);
 
   return (
     <ul className="calendar">
@@ -17,13 +19,13 @@ export default function CalendarWrap() {
         <FontAwesomeIcon
           icon={faCalendar}
           className="calendar__icon"
-          onClick={() => setCalendarVisibility(!showCalendar)}
+          onClick={setCalendarVisible}
         />
-        {showCalendar && (
+        {isVisible && (
           <Calendar
             className={'flights__calendar'}
             locale={'en-EN'}
-            onChange={value => alert(value)}
+            onChange={value => changeDate(value)}
             onClick={() => alert('click')}
           />
         )}
@@ -52,3 +54,9 @@ const mapDispatch = {
   setCalendarInvisible: Actions.setInvisible,
   changeDate: Actions.setDate,
 };
+
+const mapState = state => {
+  return { date: dateSelector(state), isVisible: visibilitySelector(state) };
+};
+
+export default connect(mapState, mapDispatch)(CalendarWrap);
