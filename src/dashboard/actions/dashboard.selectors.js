@@ -1,3 +1,6 @@
+import { modeSelector } from './mode.selectors';
+
 export function flightsListSelector(state) {
-  return state.dashboard.flightsList;
+  console.log(state.dashboard.flightsList[modeSelector(state)]);
+  return state.dashboard.flightsList[modeSelector(state)];
 }
