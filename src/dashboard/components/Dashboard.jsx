@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/dashboard.actions';
 import * as Selectors from '../actions/dashboard.selectors';
+import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
+import { dateWithOffset } from '../../utils/utils';
 
-function Dashboard({ getFlights, flightsList, getAllFlights }) {
+function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode }) {
   useEffect(() => getAllFlights(), []);
   console.log(flightsList);
   return (
@@ -22,16 +24,16 @@ function Dashboard({ getFlights, flightsList, getAllFlights }) {
         </tr>
       </thead>
       <tbody className="flights-table__body">
-        {/* {flightsList.map((flight, index) => (
-          <FlifgtInfo key={index} {...flight} />
-        ))} */}
+        {flightsList.map((flight, index) => (
+          <FlifgtInfo key={index} dashBoardMode={dashBoardMode} {...flight} />
+        ))}
       </tbody>
     </table>
   );
 }
 
 const mapState = state => {
-  return { flightsList: Selectors.flightsListSelector(state) };
+  return { flightsList: Selectors.flightsListSelector(state), dashBoardMode: modeSelector(state) };
 };
 
 const mapDispatch = {

@@ -6,23 +6,25 @@ export default function FlifgtInfo({
   term,
   timeToStand,
   timeLandFact,
-  'airportFromID.name_en': airport,
+  'airportFromID.name_en': airportFrom,
+  'airportToID.city_en': airportTo,
   logo,
   airline: {
     en: { name: airlineName },
   },
   fltNo,
-
   'carrierID.IATA': carrier,
+  dashBoardMode,
 }) {
   const localTime = timeWithZero(timeToStand);
   const departureTime = timeWithZero(timeLandFact);
   const logoBaseUrl = 'https://api.iev.aero';
-  const terminalClass='flight-info__terminal_'+term
+  const terminalClass = 'flight-info__terminal_' + term;
+  const airport = dashBoardMode === 'departure' ? airportTo : airportFrom;
   return (
     <tr className="flight-info">
       <td className="flight-info__text">
-        <span className={classNames("flight-info__terminal",terminalClass)}> {term} </span>
+        <span className={classNames('flight-info__terminal', terminalClass)}> {term} </span>
       </td>
       <td className="flight-info__text">{localTime}</td>
       <td className="flight-info__text">
