@@ -4,38 +4,42 @@ import classNames from 'classnames';
 
 export default function FlifgtInfo({
   term,
-  timeToStand,
   timeLandFact,
-  'airportFromID.name_en': airportFrom,
+  'airportFromID.city_en': airportFrom,
   'airportToID.city_en': airportTo,
   logo,
   airline: {
-    en: { name: airlineName },
+    en: { name: airlineName, logoSmallName },
   },
   fltNo,
   'carrierID.IATA': carrier,
   dashBoardMode,
+  timeDepShedule,
+  timeTakeofFact,
+  timeToStand,
 }) {
-  const localTime = timeWithZero(timeToStand);
-  const departureTime = timeWithZero(timeLandFact);
   const logoBaseUrl = 'https://api.iev.aero';
+
   const terminalClass = 'flight-info__terminal_' + term;
-  const airport = dashBoardMode === 'departure' ? airportTo : airportFrom;
+  const [airport, mode, localTime, factTime] =
+    dashBoardMode === 'departure'
+      ? [airportTo, 'Departed', timeDepShedule, timeTakeofFact]
+      : [airportFrom, 'Landed', timeToStand, timeLandFact];
   return (
     <tr className="flight-info">
       <td className="flight-info__text">
         <span className={classNames('flight-info__terminal', terminalClass)}> {term} </span>
       </td>
-      <td className="flight-info__text">{localTime}</td>
+      <td className="flight-info__text">{timeWithZero(localTime)}</td>
       <td className="flight-info__text">
         <span> {airport} </span>
       </td>
       <td className="flight-info__text">
-        <div>{`Departed at ${departureTime}`}</div>
+        <div>{factTime ? `${mode} at ${timeWithZero(factTime)}` : 'Cancelled'}</div>
       </td>
       <td className="flight-info__text">
         <div className="flight-info__logo">
-          <img src={logoBaseUrl + logo} alt={airlineName} />
+          <img src={logoSmallName || logoBaseUrl + logo} alt={airlineName} />
           <p className="flight-info__company-name">{airlineName}</p>
         </div>
       </td>

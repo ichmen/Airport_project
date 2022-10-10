@@ -1,11 +1,11 @@
 export function calendarDatesToShow() {
   const today = new Date();
-  const yesterday = new Date().setDate(today.getDate() - 1);
-  const tomorrow = new Date().setDate(today.getDate() + 1);
+  // const yesterday = new Date().setDate(today.getDate() - 1);
+  // const tomorrow = new Date().setDate(today.getDate() + 1);
   return {
-    today: dateToDateMonth(today),
-    yesterday: dateToDateMonth(yesterday),
-    tomorrow: dateToDateMonth(tomorrow),
+    today,
+    yesterday: new Date(new Date().setDate(today.getDate() - 1)),
+    tomorrow: new Date(new Date().setDate(today.getDate() + 1)),
   };
 }
 

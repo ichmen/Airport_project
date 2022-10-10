@@ -6,10 +6,11 @@ import * as Selectors from '../actions/dashboard.selectors';
 import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
 import { dateWithOffset } from '../../utils/utils';
+import { dateSelector } from '../actions/calendar.selectors';
 
-function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode }) {
-  useEffect(() => getAllFlights(), []);
-  console.log(flightsList);
+function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode, date }) {
+  useEffect(() => getAllFlights(date), []);
+  // console.log(flightsList);
   return (
     <table className="flights-table">
       <thead className="flights-table__head">
@@ -33,7 +34,11 @@ function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode }) {
 }
 
 const mapState = state => {
-  return { flightsList: Selectors.flightsListSelector(state), dashBoardMode: modeSelector(state) };
+  return {
+    flightsList: Selectors.flightsListSelector(state),
+    dashBoardMode: modeSelector(state),
+    date: dateSelector(state),
+  };
 };
 
 const mapDispatch = {

@@ -1,5 +1,6 @@
 import * as Gateway from '../../gateway/gateway';
 import { dateWithOffset } from '../../utils/utils';
+import { calendarDatesToShow } from '../components/calendar/calendar.utils';
 export const FLIGTS_LIST_LOADED = 'FLIGHTS/FLIGTS_LIST_LOADED';
 
 export function flightsListLoaded(flightsList) {

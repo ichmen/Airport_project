@@ -11,27 +11,3 @@ export function fetchFlights(date = new Date()) {
   // offline code
   // return flightsPromise;
 }
-
-function postTask(task) {
-  return fetch(baseUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(task),
-  });
-}
-function updateTask(task) {
-  return fetch(`${baseUrl}/${task.id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(task),
-  });
-}
-function deleteTask(id) {
-  return fetch(`${baseUrl}/${id}`, {
-    method: 'DELETE',
-  });
-}
