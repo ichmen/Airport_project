@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/dashboard.actions';
 import * as Selectors from '../actions/dashboard.selectors';
+import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
+import { dateWithOffset } from '../../utils/utils';
 
-function Dashboard({ getFlights, tasksList }) {
-  useEffect(() => getFlights(), []);
-  console.log(tasksList);
+function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode }) {
+  useEffect(() => getAllFlights(), []);
+  console.log(flightsList);
   return (
     <table className="flights-table">
       <thead className="flights-table__head">
@@ -22,8 +24,8 @@ function Dashboard({ getFlights, tasksList }) {
         </tr>
       </thead>
       <tbody className="flights-table__body">
-        {tasksList.map((flight, index) => (
-          <FlifgtInfo key={index} {...flight} />
+        {flightsList.map((flight, index) => (
+          <FlifgtInfo key={index} dashBoardMode={dashBoardMode} {...flight} />
         ))}
       </tbody>
     </table>
@@ -31,10 +33,11 @@ function Dashboard({ getFlights, tasksList }) {
 }
 
 const mapState = state => {
-  return { tasksList: Selectors.flightsListSelector(state) };
+  return { flightsList: Selectors.flightsListSelector(state), dashBoardMode: modeSelector(state) };
 };
 
 const mapDispatch = {
   getFlights: Actions.getFlightsList,
+  getAllFlights: Actions.getAllFlights,
 };
 export default connect(mapState, mapDispatch)(Dashboard);
