@@ -1,11 +1,13 @@
 import { modeSelector } from './mode.selectors';
 import { dateSelector } from './calendar.selectors';
+import { searchTextSelector } from './search.selectors';
 
 export function flightsListSelector(state) {
   const mode = modeSelector(state);
   const flights = state.dashboard.flightsList[mode];
   // console.log(mode);
   const date = dateSelector(state);
+  const searchText = searchTextSelector(state);
   if (!flights) {
     return [];
   }

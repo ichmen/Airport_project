@@ -5,7 +5,6 @@ import * as Actions from '../actions/dashboard.actions';
 import * as Selectors from '../actions/dashboard.selectors';
 import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
-import { dateWithOffset } from '../../utils/utils';
 import { dateSelector } from '../actions/calendar.selectors';
 
 function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode, date }) {
