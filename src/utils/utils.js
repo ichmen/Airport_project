@@ -1,17 +1,14 @@
 //@param {Date|date}
+import qs from 'qs';
 export function formatDate(date) {
   date = new Date(date);
   return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 }
 export function dateWithOffset(date) {
-  // console.log(date);
   date = new Date(date);
-  // console.log(date);
   const minsPerHour = 60;
   const timeOffset = date.getTimezoneOffset() / minsPerHour;
-  // console.log(stimeOffset);
   const result = new Date(date.setHours(date.getHours()));
-  // console.log(result);
   return result;
 }
 
@@ -41,3 +38,10 @@ export function isDatesEqual(date1, date2) {
     newDate1.getFullYear() === newDate2.getFullYear()
   );
 }
+
+// export function parseLocation(location) {
+// if(location?.pathname){
+//   const path=
+// }
+// }
+// export function updateUrl(params) {}

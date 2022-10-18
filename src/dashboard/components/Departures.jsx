@@ -3,21 +3,26 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions/mode.actions';
 import { modeSelector } from '../actions/mode.selectors';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useHref, useLocation, useNavigation } from 'react-router-dom';
 import DeparturesIcon from './DeparturesIcon';
 
 function Departures({ changeFlightsMode, mode }) {
   const componentMode = 'departure';
+  const href = useHref();
+  console.log(href);
+  const location = useLocation();
+  console.log(location);
   return (
-    <li className="flights-navigation__item" onClick={() => changeFlightsMode(componentMode)}>
-      <Link
-        to="/departures"
-        className={classNames({ 'flights-navigation__item_active': mode === componentMode })}
-      >
-        <DeparturesIcon />
-        Departures
-      </Link>
-    </li>
+    <Link
+      to={'/departures' + location.search}
+      className={classNames('flights-navigation__item', {
+        'flights-navigation__item_active': mode === componentMode,
+      })}
+      onClick={() => changeFlightsMode(componentMode)}
+    >
+      <DeparturesIcon />
+      Departures
+    </Link>
   );
 }
 

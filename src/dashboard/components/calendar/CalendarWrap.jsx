@@ -8,8 +8,14 @@ import { dateSelector, visibilitySelector } from '../../actions/calendar.selecto
 import { connect } from 'react-redux';
 import { getAllFlights } from '../../actions/dashboard.actions';
 import { useEffect } from 'react';
-import { isDatesEqual, setCalendarIconText } from '../../../utils/utils';
+import {
+  formatDate,
+  isDatesEqual,
+  parseUrlSearch,
+  setCalendarIconText,
+} from '../../../utils/utils';
 import classNames from 'classnames';
+import { useHistory, useLocation, useParams, useSearchParams } from 'react-router-dom';
 
 function CalendarWrap({
   setCalendarVisible,
@@ -20,13 +26,21 @@ function CalendarWrap({
   updateFlightList,
 }) {
   const { today, yesterday, tomorrow } = calendarDatesToShow();
-  console.log(today);
+  const [searchParams, setSearchParams] = useSearchParams();
   const ref = useOutsideClick(setCalendarInvisible);
   function calendarIconClick(event) {
     event.stopPropagation();
     setCalendarVisible();
   }
-  useEffect(() => updateFlightList(date));
+  function calendarDateChanged(value) {
+    console.log(value);
+    searchParams.set('date', formatDate(value));
+    setSearchParams(searchParams);
+    changeDate(value);
+  }
+  useEffect(() => {
+    updateFlightList(date);
+  });
 
   return (
     <ul className="calendar">
@@ -38,7 +52,7 @@ function CalendarWrap({
             inputRef={ref}
             className={'flights__calendar'}
             locale={'en-EN'}
-            onChange={value => changeDate(value)}
+            onChange={value => calendarDateChanged(value)}
             onClick={() => alert('click')}
             defaultValue={date}
           />
@@ -48,7 +62,7 @@ function CalendarWrap({
         className={classNames('calendar__item', {
           calendar__item_active: isDatesEqual(date, yesterday),
         })}
-        onClick={() => changeDate(yesterday)}
+        onClick={() => calendarDateChanged(yesterday)}
       >
         <span className="calendar__item__date">{setCalendarIconText(yesterday)}</span>
         <span className="calendar__item__day">yesterday</span>
@@ -58,7 +72,7 @@ function CalendarWrap({
         className={classNames('calendar__item', {
           calendar__item_active: isDatesEqual(date, today),
         })}
-        onClick={() => changeDate(today)}
+        onClick={() => calendarDateChanged(today)}
       >
         <span className="calendar__item__date">{setCalendarIconText(today)}</span>
         <span className="calendar__item__day">today</span>
@@ -68,7 +82,7 @@ function CalendarWrap({
         className={classNames('calendar__item', {
           calendar__item_active: isDatesEqual(date, tomorrow),
         })}
-        onClick={() => changeDate(tomorrow)}
+        onClick={() => calendarDateChanged(tomorrow)}
       >
         <span className="calendar__item__date">{setCalendarIconText(tomorrow)}</span>
         <span className="calendar__item__day">tomorrow</span>
@@ -95,8 +109,6 @@ const useOutsideClick = callback => {
   const ref = React.useRef();
   React.useEffect(() => {
     const handleClick = event => {
-      // console.log(ref.current);
-      // console.log(event.target);
       if (ref.current && !ref.current.contains(event.target)) {
         callback();
       }

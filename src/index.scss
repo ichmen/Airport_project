@@ -62,6 +62,8 @@ a {
   display: flex;
   margin-top: 40px;
   &__item {
+    display: block;
+
     text-transform: uppercase;
     text-decoration: none;
     list-style: none;

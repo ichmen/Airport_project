@@ -1,13 +1,27 @@
 import React, { useRef } from 'react';
+import { useSearchParams, useNavigate, redirect } from 'react-router-dom';
 import SearchIcon from './SearchIcon';
 import * as Actions from '../actions/search.actions';
 import { connect } from 'react-redux';
+import { modeSelector } from '../actions/mode.selectors';
 
-function Search({ setSearchString }) {
+function Search({ setSearchString, displayMode }) {
   const textBoxRef = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   function submitHandle(event) {
     event.preventDefault();
-    setSearchString(textBoxRef.current.value);
+    const searchText = textBoxRef.current.value;
+    redirect(`/${displayMode}`);
+    setSearchString(searchText);
+    console.log();
+    if (searchText) {
+      searchParams.set('search', searchText);
+      // console.log(searchParams);
+      setSearchParams(searchParams);
+    } else {
+      setSearchParams();
+    }
   }
   return (
     <>
@@ -20,9 +34,12 @@ function Search({ setSearchString }) {
           placeholder="Airline, destination or flight #"
           ref={textBoxRef}
         />
+
+        {/* <Link to={`/departures${value ? `?search=${value}` : ''}`}> */}
         <button className="search-flights__button" type="submit">
           Search
         </button>
+        {/* </Link> */}
       </form>
     </>
   );
@@ -31,4 +48,9 @@ function Search({ setSearchString }) {
 const mapDispatch = {
   setSearchString: Actions.setSearchString,
 };
-export default connect(null, mapDispatch)(Search);
+const mapState = state => {
+  return {
+    displayMode: modeSelector(state),
+  };
+};
+export default connect(mapState, mapDispatch)(Search);

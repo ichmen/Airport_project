@@ -3,26 +3,23 @@ import * as Actions from '../actions/mode.actions';
 import { modeSelector } from '../actions/mode.selectors';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ArrivalsIcon from './ArrivalsIcon';
 
 function Arrivals({ changeFlightsMode, mode }) {
   const componentMode = 'arrival';
+  const location = useLocation();
   return (
-    <li
+    <Link
+      to={'/arrivals' + location.search}
       className={classNames('flights-navigation__item', {
         'flights-navigation__item_active': mode === componentMode,
       })}
       onClick={() => changeFlightsMode(componentMode)}
     >
-      <Link
-        to="/arrivals"
-        className={classNames({ 'flights-navigation__item_active': mode === componentMode })}
-      >
-        <ArrivalsIcon />
-        Arrivals
-      </Link>
-    </li>
+      <ArrivalsIcon />
+      Arrivals
+    </Link>
   );
 }
 const mapDispatch = {
