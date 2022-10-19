@@ -8,10 +8,8 @@ import DeparturesIcon from './DeparturesIcon';
 
 function Departures({ changeFlightsMode, mode }) {
   const componentMode = 'departure';
-  const href = useHref();
-  console.log(href);
+  // const href = useHref();
   const location = useLocation();
-  console.log(location);
   return (
     <Link
       to={'/departures' + location.search}

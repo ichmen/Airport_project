@@ -33,8 +33,9 @@ function CalendarWrap({
     setCalendarVisible();
   }
   function calendarDateChanged(value) {
-    console.log(value);
-    searchParams.set('date', formatDate(value));
+    searchParams.delete('date');
+    searchParams.append('date', formatDate(value));
+    searchParams.sort();
     setSearchParams(searchParams);
     changeDate(value);
   }

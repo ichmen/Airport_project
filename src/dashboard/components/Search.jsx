@@ -12,16 +12,14 @@ function Search({ setSearchString, displayMode }) {
   function submitHandle(event) {
     event.preventDefault();
     const searchText = textBoxRef.current.value;
-    redirect(`/${displayMode}`);
     setSearchString(searchText);
-    console.log();
+    redirect(`/${displayMode}`);
+    searchParams.delete('search');
     if (searchText) {
       searchParams.set('search', searchText);
-      // console.log(searchParams);
-      setSearchParams(searchParams);
-    } else {
-      setSearchParams();
     }
+    searchParams.sort();
+    setSearchParams(searchParams);
   }
   return (
     <>

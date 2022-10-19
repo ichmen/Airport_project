@@ -3,21 +3,30 @@ import Dashboard from './Dashboard';
 import CalendarWrap from './calendar/CalendarWrap';
 import DashboardMode from './DashboardMode';
 import React from 'react';
-import { useLocation, withRouter } from 'react-router-dom';
-import qs from 'qs';
 import { setSearchString } from '../actions/search.actions';
 import { connect } from 'react-redux';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { modeChanged } from '../actions/mode.actions';
 
-function ComponentContainer({ setSearchString }) {
-  // const location = useLocation();
+function ComponentContainer({ setSearchString, modeChanged }) {
+  const location = useLocation();
+  const [searchParams, _] = useSearchParams();
+  console.log('container', location.pathname);
+  switch (location.pathname.slice(1)) {
+    case 'departures':
+      modeChanged('departure');
+      break;
+    case 'arrivals':
+      modeChanged('arrival');
+      break;
+    default:
+      modeChanged('');
+      break;
+  }
 
-  // const searchParams = qs.parse(location.search.slice(1));
-  // const mode = location?.path;
-
-  // console.log(location);
-  // if (searchParams?.search) {
-  //   setSearchString(searchParams.search);
-  // }
+  if (searchParams.has('search')) {
+    setSearchString(searchParams.get('search'));
+  }
 
   return (
     <>
@@ -33,5 +42,6 @@ function ComponentContainer({ setSearchString }) {
 
 const mapDispatch = {
   setSearchString,
+  modeChanged,
 };
 export default connect(null, mapDispatch)(ComponentContainer);
