@@ -11,7 +11,7 @@ import { modeChanged } from '../actions/mode.actions';
 function ComponentContainer({ setSearchString, modeChanged }) {
   const location = useLocation();
   const [searchParams, _] = useSearchParams();
-  console.log('container', location.pathname);
+  // console.log('container', location.pathname);
   switch (location.pathname.slice(1)) {
     case 'departures':
       modeChanged('departure');
