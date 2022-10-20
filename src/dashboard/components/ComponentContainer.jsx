@@ -1,6 +1,6 @@
 import Search from './Search';
 import Dashboard from './Dashboard';
-import CalendarWrap from './calendar/CalendarWrap';
+import CalendarWrap from './CalendarWrap';
 import DashboardMode from './DashboardMode';
 import React from 'react';
 import { setSearchString } from '../actions/search.actions';

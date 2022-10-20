@@ -1,21 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { calendarDatesToShow } from './calendar.utils';
+import { calendarDatesToShow } from '../../utils/calendar.utils';
 import Calendar from 'react-calendar';
-import * as Actions from '../../actions/calendar.actions';
-import { dateSelector, visibilitySelector } from '../../actions/calendar.selectors';
+import * as Actions from '../actions/calendar.actions';
+import { dateSelector, visibilitySelector } from '../actions/calendar.selectors';
 import { connect } from 'react-redux';
-import { getAllFlights } from '../../actions/dashboard.actions';
+import { getAllFlights } from '../actions/dashboard.actions';
 import { useEffect } from 'react';
-import {
-  formatDate,
-  isDatesEqual,
-  parseUrlSearch,
-  setCalendarIconText,
-} from '../../../utils/utils';
+import { formatDate, isDatesEqual, setCalendarIconText } from '../../utils/utils';
 import classNames from 'classnames';
-import { useHistory, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 function CalendarWrap({
   setCalendarVisible,

@@ -30,7 +30,7 @@ function Search({ setSearchString, displayMode, searchString = '' }) {
     setSearchParams(searchParams);
   }
   return (
-    <>
+    <div>
       <h2 className="search-flights__title">SEARCH FLIGHT</h2>
       <form name="search-flights__form" action="" onSubmit={submitHandle}>
         <SearchIcon />
@@ -46,7 +46,7 @@ function Search({ setSearchString, displayMode, searchString = '' }) {
           Search
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
