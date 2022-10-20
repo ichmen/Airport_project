@@ -7,9 +7,8 @@ import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
 import { dateSelector } from '../actions/calendar.selectors';
 
-function Dashboard({ getFlights, flightsList, getAllFlights, dashBoardMode, date }) {
-  useEffect(() => getAllFlights(date), []);
-  // console.log(flightsList);
+function Dashboard({ flightsList, getAllFlights, dashBoardMode, date }) {
+  useEffect(() => getAllFlights(date), [dashBoardMode]);
   return (
     <table className="flights-table">
       <thead className="flights-table__head">

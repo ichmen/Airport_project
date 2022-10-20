@@ -1,0 +1,22 @@
+@import 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap';
+@import './calendar.scss';
+@import './search.scss';
+@import './mode.scss';
+@import './dshboard.scss';
+@import './flight_info.scss';
+* {
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
+}
+a {
+  text-decoration: none;
+}
+
+img {
+  height: 40px;
+}
+// .icon {
+//   fill: black;
+// }

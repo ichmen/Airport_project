@@ -1,15 +1,6 @@
-//@param {Date|date}
-import qs from 'qs';
 export function formatDate(date) {
-  date = new Date(date);
-  return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-}
-export function dateWithOffset(date) {
-  date = new Date(date);
-  const minsPerHour = 60;
-  const timeOffset = date.getTimezoneOffset() / minsPerHour;
-  const result = new Date(date.setHours(date.getHours()));
-  return result;
+  const newDate = new Date(date);
+  return `${newDate.getDate()}-${newDate.getMonth() + 1}-${newDate.getFullYear()}`;
 }
 
 export function timeWithZero(date) {
@@ -38,10 +29,3 @@ export function isDatesEqual(date1, date2) {
     newDate1.getFullYear() === newDate2.getFullYear()
   );
 }
-
-// export function parseLocation(location) {
-// if(location?.pathname){
-//   const path=
-// }
-// }
-// export function updateUrl(params) {}

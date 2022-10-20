@@ -1,6 +1,5 @@
 import * as Gateway from '../../gateway/gateway';
 import { dateWithOffset } from '../../utils/utils';
-import { calendarDatesToShow } from '../components/calendar/calendar.utils';
 export const FLIGTS_LIST_LOADED = 'FLIGHTS/FLIGTS_LIST_LOADED';
 
 export function flightsListLoaded(flightsList) {
@@ -17,7 +16,7 @@ export function getFlightsList(date = new Date('9-10-2021')) {
     Gateway.fetchFlights(date)
       .then(({ body: { arrival } }) =>
         arrival
-          .filter(({ timeToStand }) => dateWithOffset(timeToStand).getDate() === date.getDate())
+          .filter(({ timeToStand }) => timeToStand.getDate() === date.getDate())
           .sort((a, b) => new Date(a.timeToStand) - new Date(b.timeToStand)),
       )
       .then(flightsList => dispatch(flightsListLoaded(flightsList)));

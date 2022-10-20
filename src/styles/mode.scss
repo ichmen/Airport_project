@@ -1,0 +1,44 @@
+.flights-navigation {
+  display: flex;
+  margin-top: 40px;
+  &__item {
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0;
+    border: 0;
+    position: relative;
+    font-weight: 600;
+    border-radius: 0 60px 0 0;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    outline: none;
+    background: #73d2f0;
+    overflow: hidden;
+    font-size: 24px;
+    line-height: 60px;
+    color: #fff;
+    &:hover {
+      background-color: #1eb7ee;
+    }
+    &_active {
+      color: #73d2f0;
+      background-color: #fff;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+
+    & a {
+      color: inherit;
+    }
+  }
+}
+.active-icon {
+  fill: #1eb7ee;
+}

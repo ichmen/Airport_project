@@ -7,26 +7,30 @@ import { setSearchString } from '../actions/search.actions';
 import { connect } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { modeChanged } from '../actions/mode.actions';
+import { setDate } from '../actions/calendar.actions';
+import { useEffect } from 'react';
 
-function ComponentContainer({ setSearchString, modeChanged }) {
+function ComponentContainer({ setSearchString, modeChanged, setDate }) {
   const location = useLocation();
   const [searchParams, _] = useSearchParams();
-  // console.log('container', location.pathname);
-  switch (location.pathname.slice(1)) {
-    case 'departures':
-      modeChanged('departure');
-      break;
-    case 'arrivals':
-      modeChanged('arrival');
-      break;
-    default:
-      modeChanged('');
-      break;
-  }
+  useEffect(() => {
+    if (searchParams.has('search')) {
+      setSearchString(searchParams.get('search'));
+    }
+    switch (location.pathname.slice(1)) {
+      case 'departures':
+        modeChanged('departure');
+        break;
+      case 'arrivals':
+        modeChanged('arrival');
+        break;
+    }
 
-  if (searchParams.has('search')) {
-    setSearchString(searchParams.get('search'));
-  }
+    if (searchParams.has('date')) {
+      const [day, month, year] = searchParams.get('date').split('-');
+      setDate(new Date(`${month}-${day}-${year}`));
+    }
+  });
 
   return (
     <>
@@ -43,5 +47,6 @@ function ComponentContainer({ setSearchString, modeChanged }) {
 const mapDispatch = {
   setSearchString,
   modeChanged,
+  setDate,
 };
 export default connect(null, mapDispatch)(ComponentContainer);
