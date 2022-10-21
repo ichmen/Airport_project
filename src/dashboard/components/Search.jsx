@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useSearchParams, useNavigate, redirect } from 'react-router-dom';
-import SearchIcon from './SearchIcon';
+import SearchIcon from './iconComponents/SearchIcon';
 import * as Actions from '../actions/search.actions';
 import { connect } from 'react-redux';
 import { modeSelector } from '../actions/mode.selectors';

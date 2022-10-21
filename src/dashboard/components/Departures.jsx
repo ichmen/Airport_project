@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import * as Actions from '../actions/mode.actions';
 import { modeSelector } from '../actions/mode.selectors';
 import classNames from 'classnames';
-import { Link, useHref, useLocation, useNavigation } from 'react-router-dom';
-import DeparturesIcon from './DeparturesIcon';
+import { Link, useLocation } from 'react-router-dom';
+import DeparturesIcon from './iconComponents/DeparturesIcon';
 
 function Departures({ changeFlightsMode, mode }) {
   const componentMode = 'departure';
-  // const href = useHref();
   const location = useLocation();
   return (
     <Link

@@ -41,8 +41,6 @@ function ComponentContainer({ setSearchString, modeChanged, setDate }) {
     </>
   );
 }
-// withRouter(ComponentContainer);
-// // setSearchString;
 
 const mapDispatch = {
   setSearchString,

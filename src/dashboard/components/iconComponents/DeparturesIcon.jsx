@@ -1,11 +1,11 @@
 import React from 'react';
-import { modeSelector } from '../actions/mode.selectors';
+import { modeSelector } from '../../actions/mode.selectors';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 function DeparturesIcon({ mode }) {
   return (
-    <span className="icon">
+    <span>
       <svg
         width="40px"
         height="28px"

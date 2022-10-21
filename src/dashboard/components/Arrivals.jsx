@@ -4,7 +4,7 @@ import { modeSelector } from '../actions/mode.selectors';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
-import ArrivalsIcon from './ArrivalsIcon';
+import ArrivalsIcon from './iconComponents/ArrivalsIcon';
 
 function Arrivals({ changeFlightsMode, mode }) {
   const componentMode = 'arrival';

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { modeSelector } from '../actions/mode.selectors';
+import { modeSelector } from '../../actions/mode.selectors';
 import { connect } from 'react-redux/es/exports';
 
 function ArrivalsIcon({ mode }) {
