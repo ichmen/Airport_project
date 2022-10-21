@@ -1,7 +1,7 @@
 import React from 'react';
 import { timeWithZero } from '../../utils/utils';
 import classNames from 'classnames';
-
+import NotFound from './NotFound';
 export default function FlifgtInfo({
   term,
   timeLandFact,
