@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as Actions from '../actions/dashboard.actions';
 import * as Selectors from '../actions/dashboard.selectors';
 import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
-import { dateSelector } from '../actions/calendar.selectors';
 import NotFound from './NotFound';
-import { allFlightsSelector } from '../actions/dashboard.selectors';
+import PropTypes from 'prop-types';
 
 function Dashboard({ flightsList, dashBoardMode }) {
   return (
@@ -45,3 +43,8 @@ const mapState = state => {
 };
 
 export default connect(mapState)(Dashboard);
+
+Dashboard.propTypes = {
+  flightsList: PropTypes.array.isRequired,
+  dashBoardMode: PropTypes.oneOf(['departure', 'arrival']),
+};

@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { formatDate, isDatesEqual, setCalendarIconText } from '../../utils/utils';
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function CalendarWrap({
   setCalendarVisible,
@@ -115,4 +116,13 @@ const useOutsideClick = callback => {
     };
   }, [ref]);
   return ref;
+};
+
+CalendarWrap.propTypes = {
+  setCalendarVisible: PropTypes.func.isRequired,
+  changeDate: PropTypes.func.isRequired,
+  setCalendarInvisible: PropTypes.func.isRequired,
+  date: PropTypes.object.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  updateFlightList: PropTypes.func.isRequired,
 };

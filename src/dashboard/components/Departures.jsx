@@ -5,6 +5,7 @@ import { modeSelector } from '../actions/mode.selectors';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import DeparturesIcon from './iconComponents/DeparturesIcon';
+import PropTypes from 'prop-types';
 
 function Departures({ changeFlightsMode, mode }) {
   const componentMode = 'departure';
@@ -30,3 +31,7 @@ const mapState = store => {
   return { mode: modeSelector(store) };
 };
 export default connect(mapState, mapDispatch)(Departures);
+Departures.propTypes = {
+  changeFlightsMode: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
+};

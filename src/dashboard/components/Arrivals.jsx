@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import ArrivalsIcon from './iconComponents/ArrivalsIcon';
+import PropTypes from 'prop-types';
 
 function Arrivals({ changeFlightsMode, mode }) {
   const componentMode = 'arrival';
@@ -22,6 +23,12 @@ function Arrivals({ changeFlightsMode, mode }) {
     </Link>
   );
 }
+
+Arrivals.propTypes = {
+  changeFlightsMode: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
+};
+
 const mapDispatch = {
   changeFlightsMode: Actions.modeChanged,
 };

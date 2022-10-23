@@ -1,12 +1,11 @@
-import React, { useRef } from 'react';
-import { useSearchParams, useNavigate, redirect } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { useSearchParams, redirect } from 'react-router-dom';
 import SearchIcon from './iconComponents/SearchIcon';
 import * as Actions from '../actions/search.actions';
 import { connect } from 'react-redux';
 import { modeSelector } from '../actions/mode.selectors';
 import { searchTextSelector } from '../actions/search.selectors';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function Search({ setSearchString, displayMode, searchString = '' }) {
   const textBoxRef = useRef(null);
@@ -63,3 +62,8 @@ const mapState = state => {
   };
 };
 export default connect(mapState, mapDispatch)(Search);
+Search.propTypes = {
+  setSearchString: PropTypes.func,
+  displayMode: PropTypes.oneOf(['departure', 'arrival']),
+  searchString: PropTypes.string,
+};

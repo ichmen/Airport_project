@@ -1,6 +1,8 @@
 import React from 'react';
 import { timeWithZero } from '../../utils/utils';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 export default function FlifgtInfo({
   term,
   timeLandFact,
@@ -54,3 +56,19 @@ export default function FlifgtInfo({
     </tr>
   );
 }
+
+FlifgtInfo.propTypes = {
+  term: PropTypes.string,
+  timeLandFact: PropTypes.string,
+  airportFrom: PropTypes.string,
+  airportTo: PropTypes.string,
+  logo: PropTypes.string,
+  airlineName: PropTypes.string,
+  logoSmallName: PropTypes.string,
+  fltNo: PropTypes.string,
+  carrier: PropTypes.string,
+  dashBoardMode: PropTypes.oneOf(['departure', 'arrival']),
+  timeDepShedule: PropTypes.string,
+  timeTakeofFact: PropTypes.string,
+  timeToStand: PropTypes.string,
+};

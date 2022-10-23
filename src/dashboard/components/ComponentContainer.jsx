@@ -9,6 +9,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { modeChanged } from '../actions/mode.actions';
 import { setDate } from '../actions/calendar.actions';
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function ComponentContainer({ setSearchString, modeChanged, setDate }) {
   const location = useLocation();
@@ -49,3 +50,9 @@ const mapDispatch = {
   setDate,
 };
 export default connect(null, mapDispatch)(ComponentContainer);
+
+ComponentContainer.propTypes = {
+  setSearchString: PropTypes.func.isRequired,
+  modeChanged: PropTypes.func.isRequired,
+  setDate: PropTypes.func.isRequired,
+};
