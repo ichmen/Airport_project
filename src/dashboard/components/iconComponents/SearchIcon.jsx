@@ -3,6 +3,7 @@ export default function SearchIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      // viewBox="-512 27 43 44"
       viewBox="-512.053 29 44 43"
       className="search-flights__search-picture"
     >

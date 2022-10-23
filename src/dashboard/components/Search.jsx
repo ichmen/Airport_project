@@ -33,7 +33,9 @@ function Search({ setSearchString, displayMode, searchString = '' }) {
     <div>
       <h2 className="search-flights__title">SEARCH FLIGHT</h2>
       <form name="search-flights__form" action="" onSubmit={submitHandle}>
-        <SearchIcon />
+        <i className="search-flights__icon-container">
+          <SearchIcon />
+        </i>
         <input
           className="search-flights__input"
           type="text"
@@ -42,6 +44,7 @@ function Search({ setSearchString, displayMode, searchString = '' }) {
           value={inputValue}
           onChange={e => inputChangeHandler(e)}
         />
+
         <button className="search-flights__button" type="submit">
           Search
         </button>
