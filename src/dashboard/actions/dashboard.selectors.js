@@ -26,5 +26,3 @@ export function flightsListSelector(state) {
     )
     .sort((a, b) => new Date(a[timeSelectorString]) - new Date(b[timeSelectorString]));
 }
-// departure "timeDepShedule"
-//arrival "timeArrShedule":

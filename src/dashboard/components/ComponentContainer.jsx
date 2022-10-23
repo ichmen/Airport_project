@@ -30,8 +30,7 @@ function ComponentContainer({ setSearchString, modeChanged, setDate }) {
       const [day, month, year] = searchParams.get('date').split('-');
       setDate(new Date(`${month}-${day}-${year}`));
     }
-  });
-
+  }, []);
   return (
     <>
       <Search />

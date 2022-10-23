@@ -9,8 +9,7 @@ import { dateSelector } from '../actions/calendar.selectors';
 import NotFound from './NotFound';
 
 function Dashboard({ flightsList, getAllFlights, dashBoardMode, date }) {
-  useEffect(() => getAllFlights(date), [dashBoardMode]);
-  console.log(flightsList);
+  useEffect(() => getAllFlights(date), []);
   return (
     <>
       {flightsList.length !== 0 ? (
@@ -48,7 +47,6 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-  getFlights: Actions.getFlightsList,
   getAllFlights: Actions.getAllFlights,
 };
 export default connect(mapState, mapDispatch)(Dashboard);

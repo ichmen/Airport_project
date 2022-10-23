@@ -1,6 +1,14 @@
-.no-flights-page{
-    font-family: open-sa;
-    background-color: white;
-    height: 300px;
+.no-flights-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 300px;
+
+  &__text {
     text-transform: capitalize;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+  }
 }

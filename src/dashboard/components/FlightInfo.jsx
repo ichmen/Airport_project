@@ -1,7 +1,6 @@
 import React from 'react';
 import { timeWithZero } from '../../utils/utils';
 import classNames from 'classnames';
-import NotFound from './NotFound';
 export default function FlifgtInfo({
   term,
   timeLandFact,
@@ -47,11 +46,9 @@ export default function FlifgtInfo({
         <span> {carrier + fltNo} </span>
       </td>
 
-      <td className="details-field">
+      <td>
         <div>
-          <a href="#" className="">
-            Flight details
-          </a>
+          <a href="#">Flight details</a>
         </div>
       </td>
     </tr>
