@@ -13,7 +13,9 @@ import { useEffect } from 'react';
 function ComponentContainer({ setSearchString, modeChanged, setDate }) {
   const location = useLocation();
   const [searchParams, _] = useSearchParams();
-  useEffect(() => {
+  useEffect(() => readUrlData(), []);
+
+  function readUrlData() {
     if (searchParams.has('search')) {
       setSearchString(searchParams.get('search'));
     }
@@ -30,7 +32,7 @@ function ComponentContainer({ setSearchString, modeChanged, setDate }) {
       const [day, month, year] = searchParams.get('date').split('-');
       setDate(new Date(`${month}-${day}-${year}`));
     }
-  }, []);
+  }
   return (
     <>
       <Search />

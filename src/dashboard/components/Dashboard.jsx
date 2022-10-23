@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../actions/dashboard.actions';
 import * as Selectors from '../actions/dashboard.selectors';
@@ -7,9 +6,9 @@ import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
 import { dateSelector } from '../actions/calendar.selectors';
 import NotFound from './NotFound';
+import { allFlightsSelector } from '../actions/dashboard.selectors';
 
-function Dashboard({ flightsList, getAllFlights, dashBoardMode, date }) {
-  useEffect(() => getAllFlights(date), []);
+function Dashboard({ flightsList, dashBoardMode }) {
   return (
     <>
       {flightsList.length !== 0 ? (
@@ -42,11 +41,7 @@ const mapState = state => {
   return {
     flightsList: Selectors.flightsListSelector(state),
     dashBoardMode: modeSelector(state),
-    date: dateSelector(state),
   };
 };
 
-const mapDispatch = {
-  getAllFlights: Actions.getAllFlights,
-};
-export default connect(mapState, mapDispatch)(Dashboard);
+export default connect(mapState)(Dashboard);

@@ -20,8 +20,8 @@ function CalendarWrap({
   isVisible,
   updateFlightList,
 }) {
-  const { today, yesterday, tomorrow } = calendarDatesToShow();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { today, yesterday, tomorrow } = calendarDatesToShow();
   const ref = useOutsideClick(setCalendarInvisible);
   function calendarIconClick(event) {
     event.stopPropagation();
@@ -36,7 +36,7 @@ function CalendarWrap({
   }
   useEffect(() => {
     updateFlightList(date);
-  });
+  }, [date]);
 
   return (
     <ul className="calendar">
