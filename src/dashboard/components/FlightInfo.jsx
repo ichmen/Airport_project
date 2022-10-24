@@ -8,17 +8,17 @@ export default function FlifgtInfo({
   timeLandFact,
   'airportFromID.city_en': airportFrom,
   'airportToID.city_en': airportTo,
-  logo,
-  airline: {
-    en: { name: airlineName, logoSmallName },
-  },
+  logo = '',
   fltNo,
   'carrierID.IATA': carrier,
   dashBoardMode,
   timeDepShedule,
   timeTakeofFact,
   timeToStand,
+  ...rest
 }) {
+  const airlineName = rest?.airline?.en.name || rest['carrierID.code'];
+  const logoSmallName = rest?.airline?.en.logoSmallName || '';
   const logoBaseUrl = 'https://api.iev.aero';
 
   const terminalClass = 'flight-info__terminal_' + term;

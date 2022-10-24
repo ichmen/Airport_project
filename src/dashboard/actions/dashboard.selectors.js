@@ -19,10 +19,15 @@ export function flightsListSelector(state) {
     .filter(
       ({ [timeSelectorString]: sheduleTime }) => new Date(sheduleTime).getDate() === date.getDate(),
     )
-    .filter(
-      ({ [airportToSearch]: airport, 'carrierID.IATA': carrier, fltNo }) =>
+
+    .sort((a, b) => new Date(a[timeSelectorString]) - new Date(b[timeSelectorString]))
+    .filter(flight => {
+      const { [airportToSearch]: airport, 'carrierID.IATA': carrier, fltNo, ...rest } = flight;
+      const airlineName = rest?.airline?.en.name || '';
+      return (
         airport.toUpperCase().includes(searchText) ||
-        (carrier + fltNo).toUpperCase().includes(searchText),
-    )
-    .sort((a, b) => new Date(a[timeSelectorString]) - new Date(b[timeSelectorString]));
+        (carrier + fltNo).toUpperCase().includes(searchText) ||
+        airlineName.toUpperCase().includes(searchText)
+      );
+    });
 }
