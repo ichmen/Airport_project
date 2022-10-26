@@ -12,7 +12,13 @@ export function flightsListLoaded(flightsList) {
 
 export function getAllFlights(date = new Date('9-10-2021')) {
   function thunkAction(dispatch) {
-    Gateway.fetchFlights(date).then(({ body }) => dispatch(flightsListLoaded(body)));
+    try {
+      Gateway.fetchFlights(date)
+        .then(({ body }) => dispatch(flightsListLoaded(body)))
+        .catch(e => null);
+    } catch (e) {
+      alert("Can't fetch or bad data");
+    }
   }
   return thunkAction;
 }

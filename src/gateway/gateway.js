@@ -5,6 +5,6 @@ import flightsPromise from '../10-9-2021';
 export function fetchFlights(date = new Date()) {
   return fetch(baseUrl + formatDate(date))
     .then(response => response.json())
-    .catch(() => flightsPromise)
-    .then(() => alert('Failed to fetch data')); //closed ports case
+    .catch(e => alert(`Failed to fetch data ${e}`));
+  // .then(() => alert('Failed to fetch data')); //closed ports case
 }
