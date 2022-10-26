@@ -63,7 +63,6 @@ function CalendarWrap({
       >
         <span className="calendar__item__date">{setCalendarIconText(yesterday)}</span>
         <span className="calendar__item__day">yesterday</span>
-        <hr className="calendar__item__line"></hr>
       </li>
       <li
         className={classNames('calendar__item', {
@@ -73,7 +72,6 @@ function CalendarWrap({
       >
         <span className="calendar__item__date">{setCalendarIconText(today)}</span>
         <span className="calendar__item__day">today</span>
-        <hr></hr>
       </li>
       <li
         className={classNames('calendar__item', {
@@ -83,7 +81,6 @@ function CalendarWrap({
       >
         <span className="calendar__item__date">{setCalendarIconText(tomorrow)}</span>
         <span className="calendar__item__day">tomorrow</span>
-        <hr />
       </li>
     </ul>
   );
