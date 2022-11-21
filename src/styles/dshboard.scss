@@ -2,7 +2,7 @@
   border-collapse: collapse;
   width: 100%;
   & tr:nth-child(even) {
-    background-color: #fff;
+    background-color: $light-background;
   }
   &__head {
     font-family: 'Open Sans', sans-serif;
@@ -11,7 +11,7 @@
     font-weight: 600;
     font-size: 16px;
     text-align: left;
-    background-color: #fff;
+    background-color: $light-background;
   }
   &__row {
     height: 72px;

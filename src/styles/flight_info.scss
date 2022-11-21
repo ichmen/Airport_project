@@ -7,7 +7,6 @@
     box-shadow: 1px 1px 1px rgb(69, 67, 67);
   }
   &__terminal {
-    color: #63c745;
     font-weight: 700;
     border-radius: 50%;
     display: inline-block;
@@ -17,12 +16,12 @@
     line-height: 35px;
     font-size: 22px;
     &_A {
-      color: #63c745;
-      border: 1px solid #63c745;
+      color: $terminal-a-color;
+      border: 1px solid $terminal-a-color;
     }
     &_D {
-      color: #1eb7ee;
-      border: 1px solid #1eb7ee;
+      color: $terminal-a-color;
+      border: 1px solid $terminal-a-color;
     }
   }
   &__text {

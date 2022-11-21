@@ -5,12 +5,12 @@
   height: 55px;
   text-decoration: none;
   list-style: none;
-  background-color: #fff;
+  background-color:$light-background;
   margin: 0;
   padding: 0;
   &__icon {
-    background-color: #1eb7ee;
-    color: #fff;
+    background-color:$dark-blue ;
+    color:$light-background;
     height: 30px;
     margin: 0 16px;
     padding: 5px;
@@ -28,8 +28,8 @@
       font-weight: 700;
     }
     &_active {
-      border-bottom: 3px solid #1eb7ee;
-      color: #1eb7ee;
+      border-bottom: 3px solid $dark-blue;
+      color:$dark-blue ;
       font-weight: 700;
     }
     &__date {

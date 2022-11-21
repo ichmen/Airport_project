@@ -18,19 +18,19 @@
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
     outline: none;
-    background: #73d2f0;
+    background: $light-blue;
     overflow: hidden;
     font-size: 24px;
     line-height: 60px;
-    color: #fff;
+    color: $light-background;
     &:hover {
-      background-color: #1eb7ee;
+      background-color:$dark-blue ;
     }
     &_active {
-      color: #1eb7ee;
-      background-color: #fff;
+      color: $dark-blue;
+      background-color: $light-background;
       &:hover {
-        background-color: #fff;
+        background-color: $light-background;
       }
     }
 
@@ -40,5 +40,5 @@
   }
 }
 .active-icon {
-  fill: #1eb7ee;
+  fill: $dark-blue;
 }

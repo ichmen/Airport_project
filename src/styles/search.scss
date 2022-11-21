@@ -1,7 +1,8 @@
 .search-flights {
-  background: #e7efec;
+  background: $dark-background;
   font-family: 'Open Sans', sans-serif;
   padding: 40px 0 20px;
+  height: 100vh;
   &__container {
     display: flex;
     flex-direction: column;
@@ -14,7 +15,7 @@
   }
   &__icon-container {
     position: absolute;
-    background-color: white;
+    background-color:$light-background;
   }
   &__title {
     margin: 0;
@@ -42,7 +43,7 @@
     height: 80px;
     width: 200px;
     font-size: 26px;
-    background: #1eb7ee;
+    background:$dark-blue ;
     font-weight: 700;
     border: none;
     border-top-right-radius: 80px;
