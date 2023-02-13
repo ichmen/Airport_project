@@ -1,5 +1,6 @@
 import * as Gateway from '../../gateway/gateway';
 export const FLIGTS_LIST_LOADED = 'FLIGHTS/FLIGTS_LIST_LOADED';
+export const FLIGHTS_IS_LOADED_TOGGLE = 'FLIGHTS/FLIGHTS_IS_LOADED_TOGGLE';
 
 export function flightsListLoaded(flightsList) {
   return {
@@ -21,4 +22,10 @@ export function getAllFlights(date = new Date('9-10-2021')) {
     }
   }
   return thunkAction;
+}
+
+export function toogleIsLoaded() {
+  return {
+    type: FLIGHTS_IS_LOADED_TOGGLE,
+  };
 }

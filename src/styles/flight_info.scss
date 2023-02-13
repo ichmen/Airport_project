@@ -19,9 +19,13 @@
       color: $terminal-a-color;
       border: 1px solid $terminal-a-color;
     }
+    &_B {
+      color: $terminal-b-color;
+      border: 1px solid $terminal-b-color;
+    }
     &_D {
-      color: $terminal-a-color;
-      border: 1px solid $terminal-a-color;
+      color: $terminal-d-color;
+      border: 1px solid $terminal-d-color;
     }
   }
   &__text {
