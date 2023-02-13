@@ -31,6 +31,3 @@ export function flightsListSelector(state) {
       );
     });
 }
-export function isLoadedSelector(state) {
-  return state.dashboard.isLoaded;
-}

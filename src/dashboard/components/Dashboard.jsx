@@ -5,20 +5,8 @@ import { modeSelector } from '../actions/mode.selectors';
 import FlifgtInfo from './FlightInfo';
 import NotFound from './NotFound';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { toogleIsLoaded } from '../actions/dashboard.actions';
 
-function Dashboard({ flightsList, dashBoardMode, isLoaded }) {
-  const [state, setState] = useState(isLoaded);
-  useEffect(() => {
-    toogleIsLoaded();
-    console.log(isLoaded);
-  }, [flightsList, isLoaded]);
-  // if (!state) {
-  //   console.log('here');
-  //   return null;
-  // }
+function Dashboard({ flightsList, dashBoardMode }) {
   return (
     <>
       {flightsList.length ? (
@@ -50,7 +38,7 @@ function Dashboard({ flightsList, dashBoardMode, isLoaded }) {
 const mapState = state => {
   return {
     flightsList: Selectors.flightsListSelector(state),
-    isLoaded: Selectors.isLoadedSelector(state),
+
     dashBoardMode: modeSelector(state),
   };
 };
