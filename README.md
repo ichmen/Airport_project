@@ -24,5 +24,5 @@ It correctly bundles React in production mode and optimizes the build for the be
       <li>React-router</li>
     </ul>
     <h3>Author</h3>
-     <a href='https://linkedin.com/in/volodymyr-kolosov-b4889438'><li> V.Kolosov 2022 </li></a>
+     <a href='https://linkedin.com/in/volodymyr-kolosov-b4889438' target="_blank"><li> V.Kolosov 2022 </li></a>
   </html>
